@@ -1,79 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* Make the SVG controller very dark/black */
-.controller.xbox svg {
-    filter: brightness(0.08) saturate(0);
+@keyframes nxstyPulse {
+  0%, 100% { text-shadow: 0 0 8px #ff0000, 0 0 20px #cc0000, 0 0 40px #880000; color: #ff2222; }
+  50% { text-shadow: 0 0 15px #ff0000, 0 0 35px #dd0000, 0 0 70px #990000, 0 0 100px #440000; color: #ff5555; }
 }
 
-/* Red glow background behind controller */
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+  98% { opacity: 0.7; }
+  99% { opacity: 1; }
+}
+
+.controller.xbox svg {
+    filter: brightness(0.05) saturate(0);
+    mix-blend-mode: screen;
+    position: relative;
+    z-index: 3;
+}
+
 .controller.xbox::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(180,0,0,0.18) 0%, transparent 70%);
-    z-index: 10;
+    inset: 0;
+    z-index: 1;
     pointer-events: none;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3OTQgNjM5Ij4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjQiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9InNnIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxMiIgcmVzdWx0PSJiIi8+PGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJiIi8+PGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+PC9mZU1lcmdlPjwvZmlsdGVyPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJza3kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwIi8+PHN0b3Agb2Zmc2V0PSI0NSUiIHN0b3AtY29sb3I9IiMwZDAwMDAiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzIyMDAwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNuZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZjIyMDAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjYzAwMDAiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGNsaXBQYXRoIGlkPSJzYyI+PGNpcmNsZSBjeD0iMzk3IiBjeT0iMzA1IiByPSI5MCIvPjwvY2xpcFBhdGg+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3OTQiIGhlaWdodD0iNjM5IiBmaWxsPSJ1cmwoI3NreSkiLz4KICA8Y2lyY2xlIGN4PSIzOTciIGN5PSIzMDUiIHI9IjEzMCIgZmlsbD0iIzMzMDAwMCIgZmlsdGVyPSJ1cmwoI3NnKSIvPgogIDxjaXJjbGUgY3g9IjM5NyIgY3k9IjMwNSIgcj0iOTAiIGZpbGw9InVybCgjc25nKSIgZmlsdGVyPSJ1cmwoI3NnKSIvPgogIDxnIGNsaXAtcGF0aD0idXJsKCNzYykiPgogICAgPHJlY3QgeD0iMzA3IiB5PSIzMTgiIHdpZHRoPSIxODAiIGhlaWdodD0iNyIgZmlsbD0iIzAwMCIvPgogICAgPHJlY3QgeD0iMzA3IiB5PSIzMzUiIHdpZHRoPSIxODAiIGhlaWdodD0iOSIgZmlsbD0iIzAwMCIvPgogICAgPHJlY3QgeD0iMzA3IiB5PSIzNTYiIHdpZHRoPSIxODAiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAiLz4KICAgIDxyZWN0IHg9IjMwNyIgeT0iMzgyIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDAwIi8+CiAgPC9nPgogIDxyZWN0IHg9IjAiIHk9IjM5MyIgd2lkdGg9Ijc5NCIgaGVpZ2h0PSIyIiBmaWxsPSIjY2MwMDAwIiBmaWx0ZXI9InVybCgjZ2xvdykiLz4KICA8bGluZSB4MT0iMCIgeTE9IjQxMyIgeDI9Ijc5NCIgeTI9IjQxMyIgc3Ryb2tlPSIjY2MwMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogIDxsaW5lIHgxPSIwIiB5MT0iNDM2IiB4Mj0iNzk0IiB5Mj0iNDM2IiBzdHJva2U9IiNjYzAwMDAiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42NSIvPgogIDxsaW5lIHgxPSIwIiB5MT0iNDYzIiB4Mj0iNzk0IiB5Mj0iNDYzIiBzdHJva2U9IiNjYzAwMDAiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPGxpbmUgeDE9IjAiIHkxPSI0OTYiIHgyPSI3OTQiIHkyPSI0OTYiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNTUiLz4KICA8bGluZSB4MT0iMCIgeTE9IjUzNCIgeDI9Ijc5NCIgeTI9IjUzNCIgc3Ryb2tlPSIjY2MwMDAwIiBzdHJva2Utd2lkdGg9IjEuMyIgb3BhY2l0eT0iMC41Ii8+CiAgPGxpbmUgeDE9IjAiIHkxPSI1NzgiIHgyPSI3OTQiIHkyPSI1NzgiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNDUiLz4KICA8bGluZSB4MT0iMCIgeTE9IjYzMCIgeDI9Ijc5NCIgeTI9IjYzMCIgc3Ryb2tlPSIjY2MwMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC40Ii8+CiAgPGxpbmUgeDE9IjM5NyIgeTE9IjM5MyIgeDI9IjAiIHkyPSI2MzkiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjU1Ii8+CiAgPGxpbmUgeDE9IjM5NyIgeTE9IjM5MyIgeDI9IjkwIiB5Mj0iNjM5IiBzdHJva2U9IiNjYzAwMDAiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41NSIvPgogIDxsaW5lIHgxPSIzOTciIHkxPSIzOTMiIHgyPSIyMDAiIHkyPSI2MzkiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjU1Ii8+CiAgPGxpbmUgeDE9IjM5NyIgeTE9IjM5MyIgeDI9IjMwMCIgeTI9IjYzOSIgc3Ryb2tlPSIjY2MwMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogIDxsaW5lIHgxPSIzOTciIHkxPSIzOTMiIHgyPSIzOTciIHkyPSI2MzkiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNyIvPgogIDxsaW5lIHgxPSIzOTciIHkxPSIzOTMiIHgyPSI0OTQiIHkyPSI2MzkiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICA8bGluZSB4MT0iMzk3IiB5MT0iMzkzIiB4Mj0iNTk0IiB5Mj0iNjM5IiBzdHJva2U9IiNjYzAwMDAiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41NSIvPgogIDxsaW5lIHgxPSIzOTciIHkxPSIzOTMiIHgyPSI3MDQiIHkyPSI2MzkiIHN0cm9rZT0iI2NjMDAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjU1Ii8+CiAgPGxpbmUgeDE9IjM5NyIgeTE9IjM5MyIgeDI9Ijc5NCIgeTI9IjYzOSIgc3Ryb2tlPSIjY2MwMDAwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNTUiLz4KICA8cGF0aCBkPSJNMTQ4LDQxMCBRMTUyLDM1MCAxNDUsMjk1IFExNDgsMjgwIDE1NSwyOTUgUTE2MCwzNTAgMTYyLDQxMCBaIiBmaWxsPSIjMWEwMDAwIi8+CiAgPGVsbGlwc2UgY3g9IjEzMCIgY3k9IjI4MCIgcng9IjQ4IiByeT0iMTEiIGZpbGw9IiMxYTAwMDAiIHRyYW5zZm9ybT0icm90YXRlKC0zNSwxMzAsMjgwKSIvPgogIDxlbGxpcHNlIGN4PSIxNTIiIGN5PSIyNjgiIHJ4PSI1MiIgcnk9IjExIiBmaWxsPSIjMWEwMDAwIiB0cmFuc2Zvcm09InJvdGF0ZSgxMCwxNTIsMjY4KSIvPgogIDxlbGxpcHNlIGN4PSIxMTgiIGN5PSIyNzAiIHJ4PSI0MiIgcnk9IjkiIGZpbGw9IiMxYTAwMDAiIHRyYW5zZm9ybT0icm90YXRlKC02NSwxMTgsMjcwKSIvPgogIDxlbGxpcHNlIGN4PSIxNzIiIGN5PSIyNzUiIHJ4PSIzOCIgcnk9IjkiIGZpbGw9IiMxYTAwMDAiIHRyYW5zZm9ybT0icm90YXRlKDUwLDE3MiwyNzUpIi8+CiAgPHBhdGggZD0iTTYzOCw0MTAgUTY0MiwzNDggNjM2LDI5MCBRNjQwLDI3NSA2NDcsMjkwIFE2NTIsMzQ4IDY1Niw0MTAgWiIgZmlsbD0iIzFhMDAwMCIvPgogIDxlbGxpcHNlIGN4PSI2NjAiIGN5PSIyNzIiIHJ4PSI0OCIgcnk9IjExIiBmaWxsPSIjMWEwMDAwIiB0cmFuc2Zvcm09InJvdGF0ZSgzNSw2NjAsMjcyKSIvPgogIDxlbGxpcHNlIGN4PSI2MzgiIGN5PSIyNjAiIHJ4PSI1MiIgcnk9IjExIiBmaWxsPSIjMWEwMDAwIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTAsNjM4LDI2MCkiLz4KICA8ZWxsaXBzZSBjeD0iNjcyIiBjeT0iMjY1IiByeD0iNDIiIHJ5PSI5IiBmaWxsPSIjMWEwMDAwIiB0cmFuc2Zvcm09InJvdGF0ZSg2NSw2NzIsMjY1KSIvPgogIDxlbGxpcHNlIGN4PSI2MjIiIGN5PSIyNzAiIHJ4PSIzOCIgcnk9IjkiIGZpbGw9IiMxYTAwMDAiIHRyYW5zZm9ybT0icm90YXRlKC01MCw2MjIsMjcwKSIvPgo8L3N2Zz4=");
+    background-size: cover;
+    background-position: center;
 }
 
-/* NXSTY text */
 .controller.xbox::after {
     content: 'NXSTY';
     position: absolute;
-    top: 44%;
+    top: 41%;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Bebas Neue', Impact, sans-serif;
-    font-size: 26px;
-    letter-spacing: 8px;
-    color: #dd0000;
-    text-shadow:
-        0 0 6px rgba(220,0,0,0.9),
-        0 0 18px rgba(220,0,0,0.5),
-        0 0 40px rgba(220,0,0,0.2);
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: #ff2222;
     z-index: 20;
     pointer-events: none;
     white-space: nowrap;
+    animation: nxstyPulse 2.5s ease-in-out infinite, flicker 6s step-end infinite;
 }
 
-/* Buttons - red glow when pressed */
-.controller.xbox .button {
-    opacity: 0.7;
-}
 .controller.xbox .button.pressed {
-    opacity: 1;
-    filter: drop-shadow(0 0 5px #cc0000) drop-shadow(0 0 10px #cc0000) sepia(1) saturate(5) hue-rotate(310deg);
+    filter: drop-shadow(0 0 6px #cc0000) drop-shadow(0 0 12px #cc0000) sepia(1) saturate(6) hue-rotate(310deg);
 }
 
-/* Triggers */
-.controller.xbox .trigger {
-    opacity: 0;
-}
+.controller.xbox .trigger { opacity: 0; }
 .controller.xbox .trigger.pressed {
     opacity: 1;
-    filter: sepia(1) saturate(5) hue-rotate(310deg) drop-shadow(0 0 8px #cc0000);
+    filter: sepia(1) saturate(6) hue-rotate(310deg) drop-shadow(0 0 10px #cc0000);
 }
 
-/* Bumpers */
-.controller.xbox .bumper {
-    opacity: 0;
-}
+.controller.xbox .bumper { opacity: 0; }
 .controller.xbox .bumper.pressed {
     opacity: 1;
-    filter: sepia(1) saturate(5) hue-rotate(310deg) drop-shadow(0 0 6px #cc0000);
+    filter: sepia(1) saturate(6) hue-rotate(310deg) drop-shadow(0 0 8px #cc0000);
 }
 
-/* Sticks */
-.controller.xbox .stick {
-    filter: brightness(0.15);
-}
+.controller.xbox .stick { filter: brightness(0.12); }
 .controller.xbox .stick.pressed {
-    filter: sepia(1) saturate(5) hue-rotate(310deg) brightness(0.8);
+    filter: sepia(1) saturate(6) hue-rotate(310deg) brightness(0.9);
 }
 
-/* Dpad */
-.controller.xbox .face {
-    filter: brightness(0.12);
-}
+.controller.xbox .face { filter: brightness(0.1); }
 .controller.xbox .face.pressed {
-    filter: sepia(1) saturate(5) hue-rotate(310deg) brightness(0.8);
+    filter: sepia(1) saturate(6) hue-rotate(310deg) brightness(0.9);
 }
