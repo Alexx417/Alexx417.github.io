@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@keyframes fireGlow {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff4400, 0 0 40px #ff2200, 0 0 60px #cc0000, 3px 3px 0 #880000, 6px 6px 0 #440000;
+    -webkit-text-stroke: 3px #ff2200;
+  }
+  50% {
+    text-shadow: 0 0 8px #fff, 0 0 20px #ffcc00, 0 0 35px #ff8800, 0 0 60px #ff3300, 0 0 80px #dd0000, 3px 3px 0 #880000, 6px 6px 0 #440000;
+    -webkit-text-stroke: 3px #ffaa00;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff4400, 0 0 20px #ff2200, 0 0 40px #cc0000, 0 0 60px #990000, 3px 3px 0 #880000, 6px 6px 0 #440000;
+    -webkit-text-stroke: 3px #ff2200;
+  }
+}
+
+.controller.xbox {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.controller.xbox svg {
+    filter: brightness(0.06) saturate(0) !important;
+}
+
+.controller.xbox::after {
+    content: 'NXSTY' !important;
+    position: absolute !important;
+    top: 38% !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(-4deg) !important;
+    font-family: 'Permanent Marker', cursive !important;
+    font-size: 60px !important;
+    letter-spacing: 6px !important;
+    color: #000 !important;
+    -webkit-text-stroke: 3px #ff2200;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+    display: block !important;
+    animation: fireGlow 1s ease-in-out infinite alternate !important;
+}
