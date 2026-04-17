@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@keyframes fire {
+  0%   { color: #ffdd00; text-shadow: 2px 2px 0 #7a0000, 4px 4px 0 #600000, 6px 6px 0 #460000, 8px 8px 0 #300000, 0 0 8px #ff4400, 0 0 20px #ff2200, 0 0 40px #cc0000, 0 0 60px #880000; }
+  25%  { color: #ffee44; text-shadow: 2px 2px 0 #7a0000, 4px 4px 0 #600000, 6px 6px 0 #460000, 8px 8px 0 #300000, 0 0 14px #ffaa00, 0 0 30px #ff6600, 0 0 50px #dd0000, 0 0 75px #990000; }
+  50%  { color: #ff9900; text-shadow: 2px 2px 0 #7a0000, 4px 4px 0 #600000, 6px 6px 0 #460000, 8px 8px 0 #300000, 0 0 6px #ff8800, 0 0 18px #ff3300, 0 0 32px #bb0000, 0 0 52px #770000; }
+  75%  { color: #ffcc00; text-shadow: 2px 2px 0 #7a0000, 4px 4px 0 #600000, 6px 6px 0 #460000, 8px 8px 0 #300000, 0 0 16px #ffcc00, 0 0 34px #ff7700, 0 0 55px #ee0000, 0 0 80px #aa0000; }
+  100% { color: #ffdd00; text-shadow: 2px 2px 0 #7a0000, 4px 4px 0 #600000, 6px 6px 0 #460000, 8px 8px 0 #300000, 0 0 8px #ff4400, 0 0 20px #ff2200, 0 0 40px #cc0000, 0 0 60px #880000; }
+}
+
+/* Keep controller visible, just slightly darkened */
+.controller.xbox {
+    position: relative !important;
+    overflow: visible !important;
+    filter: brightness(0.45) !important;
+}
+
+/* NXSTY fire text on top */
+.controller.xbox::after {
+    content: 'NXSTY' !important;
+    display: block !important;
+    position: absolute !important;
+    top: 40% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-family: 'Bebas Neue', Impact, sans-serif !important;
+    font-size: 72px !important;
+    font-weight: 900 !important;
+    letter-spacing: 12px !important;
+    color: #ffdd00 !important;
+    white-space: nowrap !important;
+    z-index: 99999 !important;
+    pointer-events: none !important;
+    animation: fire 0.9s ease-in-out infinite alternate !important;
+    filter: brightness(3) !important;
+}
+
+/* Buttons */
+.controller.xbox .button.pressed {
+    filter: brightness(4) sepia(1) saturate(8) hue-rotate(310deg) drop-shadow(0 0 8px #ff4400) !important;
+}
+
+/* Triggers */
+.controller.xbox .trigger { opacity: 0 !important; }
+.controller.xbox .trigger.pressed {
+    opacity: 1 !important;
+    filter: brightness(4) sepia(1) saturate(8) hue-rotate(310deg) !important;
+}
+
+/* Bumpers */
+.controller.xbox .bumper { opacity: 0 !important; }
+.controller.xbox .bumper.pressed {
+    opacity: 1 !important;
+    filter: brightness(4) sepia(1) saturate(8) hue-rotate(310deg) !important;
+}
+
+/* Sticks */
+.controller.xbox .stick.pressed {
+    filter: brightness(4) sepia(1) saturate(8) hue-rotate(310deg) !important;
+}
