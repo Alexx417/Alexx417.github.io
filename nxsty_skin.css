@@ -1,0 +1,59 @@
+/* NXSTY - Black & Red Xbox Controller Skin */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Main controller body - black */
+.controller.xbox svg .controller-body,
+.controller.xbox svg path,
+.controller.xbox svg rect,
+.controller.xbox svg ellipse,
+.controller.xbox svg circle {
+    fill: #0a0a0a !important;
+    stroke: #cc0000 !important;
+    stroke-width: 0.5px;
+}
+
+/* Controller background override */
+.controller.xbox {
+    filter: brightness(0.15) sepia(1) hue-rotate(320deg) saturate(5) brightness(0.6);
+    position: relative;
+}
+
+/* Restore brightness after filter trick */
+.controller.xbox > * {
+    filter: brightness(6) sepia(0) hue-rotate(0deg) saturate(1);
+}
+
+/* NXSTY Text on controller */
+.controller.xbox::after {
+    content: 'NXSTY';
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #cc0000;
+    text-shadow: 
+        0 0 8px rgba(204, 0, 0, 0.8),
+        0 0 20px rgba(204, 0, 0, 0.4);
+    z-index: 999;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Red glow on buttons when pressed */
+.controller.xbox .button.pressed {
+    filter: drop-shadow(0 0 6px #cc0000) brightness(1.5);
+}
+
+.controller.xbox .trigger.pressed,
+.controller.xbox .bumper.pressed {
+    filter: drop-shadow(0 0 8px #cc0000) brightness(1.4);
+}
+
+/* Stick pressed state */
+.controller.xbox .stick.pressed {
+    filter: drop-shadow(0 0 6px #cc0000);
+}
