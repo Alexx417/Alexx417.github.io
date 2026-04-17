@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@keyframes nxstyPulse {
+  0%, 100% {
+    text-shadow: 0 0 8px #ff0000, 0 0 20px #cc0000, 0 0 40px #880000;
+    color: #ff2222;
+  }
+  50% {
+    text-shadow: 0 0 15px #ff0000, 0 0 35px #dd0000, 0 0 70px #990000, 0 0 100px #440000;
+    color: #ff5555;
+  }
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+  98% { opacity: 0.7; }
+  99% { opacity: 1; }
+}
+
+/* Darken base controller, keep shape for interaction */
+.controller.xbox svg {
+    filter: brightness(0.05) saturate(0);
+    mix-blend-mode: screen;
+    position: relative;
+    z-index: 3;
+}
+
+/* Synthwave scene background */
+.controller.xbox::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http:%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox='0%200%20794%20639'%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3Cfilter%20id='glow'%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation='4'%20result='blur'%2F%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%3CfeMergeNode%20in='blur'%2F%3E%3CfeMergeNode%20in='SourceGraphic'%2F%3E%3C%2FfeMerge%3E%0A%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3Cfilter%20id='sglow'%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation='10'%20result='blur'%2F%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%3CfeMergeNode%20in='blur'%2F%3E%3CfeMergeNode%20in='SourceGraphic'%2F%3E%3C%2FfeMerge%3E%0A%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3ClinearGradient%20id='sky'%20x1='0'%20y1='0'%20x2='0'%20y2='1'%3E%0A%20%20%20%20%20%20%3Cstop%20offset='0%25'%20stop-color='%2523000000'%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset='50%25'%20stop-color='%25230d0000'%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset='65%25'%20stop-color='%2523220000'%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset='100%25'%20stop-color='%2523000000'%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id='sg'%20x1='0'%20y1='0'%20x2='0'%20y2='1'%3E%0A%20%20%20%20%20%20%3Cstop%20offset='0%25'%20stop-color='%2523ff2200'%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset='100%25'%20stop-color='%2523cc0000'%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3CclipPath%20id='sc'%3E%3Ccircle%20cx='397'%20cy='305'%20r='90'%2F%3E%3C%2FclipPath%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width='794'%20height='639'%20fill='url(%2523sky)'%2F%3E%0A%20%20%3Ccircle%20cx='397'%20cy='305'%20r='120'%20fill='%2523330000'%20filter='url(%2523sglow)'%2F%3E%0A%20%20%3Ccircle%20cx='397'%20cy='305'%20r='90'%20fill='url(%2523sg)'%20filter='url(%2523sglow)'%2F%3E%0A%20%20%3Cg%20clip-path='url(%2523sc)'%3E%0A%20%20%20%20%3Crect%20x='307'%20y='318'%20width='180'%20height='7'%20fill='%2523000'%2F%3E%0A%20%20%20%20%3Crect%20x='307'%20y='335'%20width='180'%20height='9'%20fill='%2523000'%2F%3E%0A%20%20%20%20%3Crect%20x='307'%20y='356'%20width='180'%20height='12'%20fill='%2523000'%2F%3E%0A%20%20%20%20%3Crect%20x='307'%20y='382'%20width='180'%20height='15'%20fill='%2523000'%2F%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Crect%20x='0'%20y='393'%20width='794'%20height='3'%20fill='%2523cc0000'%20filter='url(%2523glow)'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='415'%20x2='794'%20y2='415'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.7'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='438'%20x2='794'%20y2='438'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.65'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='465'%20x2='794'%20y2='465'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.6'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='498'%20x2='794'%20y2='498'%20stroke='%2523cc0000'%20stroke-width='1.2'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='535'%20x2='794'%20y2='535'%20stroke='%2523cc0000'%20stroke-width='1.3'%20opacity='0.5'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='578'%20x2='794'%20y2='578'%20stroke='%2523cc0000'%20stroke-width='1.5'%20opacity='0.45'%2F%3E%0A%20%20%3Cline%20x1='0'%20y1='630'%20x2='794'%20y2='630'%20stroke='%2523cc0000'%20stroke-width='1.5'%20opacity='0.4'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='0'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='90'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='200'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='300'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.6'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='397'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1.5'%20opacity='0.7'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='494'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.6'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='594'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='704'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cline%20x1='397'%20y1='393'%20x2='794'%20y2='639'%20stroke='%2523cc0000'%20stroke-width='1'%20opacity='0.55'%2F%3E%0A%20%20%3Cpath%20d='M148,410%20Q152,350%20145,295%20Q148,280%20155,295%20Q160,350%20162,410%20Z'%20fill='%25231a0000'%2F%3E%0A%20%20%3Cellipse%20cx='130'%20cy='280'%20rx='48'%20ry='11'%20fill='%25231a0000'%20transform='rotate(-35,130,280)'%2F%3E%0A%20%20%3Cellipse%20cx='152'%20cy='268'%20rx='52'%20ry='11'%20fill='%25231a0000'%20transform='rotate(10,152,268)'%2F%3E%0A%20%20%3Cellipse%20cx='118'%20cy='270'%20rx='42'%20ry='9'%20fill='%25231a0000'%20transform='rotate(-65,118,270)'%2F%3E%0A%20%20%3Cellipse%20cx='172'%20cy='275'%20rx='38'%20ry='9'%20fill='%25231a0000'%20transform='rotate(50,172,275)'%2F%3E%0A%20%20%3Cellipse%20cx='155'%20cy='290'%20rx='30'%20ry='8'%20fill='%25231a0000'%20transform='rotate(80,155,290)'%2F%3E%0A%20%20%3Cpath%20d='M638,410%20Q642,348%20636,290%20Q640,275%20647,290%20Q652,348%20656,410%20Z'%20fill='%25231a0000'%2F%3E%0A%20%20%3Cellipse%20cx='660'%20cy='272'%20rx='48'%20ry='11'%20fill='%25231a0000'%20transform='rotate(35,660,272)'%2F%3E%0A%20%20%3Cellipse%20cx='638'%20cy='260'%20rx='52'%20ry='11'%20fill='%25231a0000'%20transform='rotate(-10,638,260)'%2F%3E%0A%20%20%3Cellipse%20cx='672'%20cy='265'%20rx='42'%20ry='9'%20fill='%25231a0000'%20transform='rotate(65,672,265)'%2F%3E%0A%20%20%3Cellipse%20cx='622'%20cy='270'%20rx='38'%20ry='9'%20fill='%25231a0000'%20transform='rotate(-50,622,270)'%2F%3E%0A%20%20%3Cellipse%20cx='638'%20cy='284'%20rx='30'%20ry='8'%20fill='%25231a0000'%20transform='rotate(-80,638,284)'%2F%3E%0A%3C%2Fsvg%3E%0A");
+    background-size: cover;
+    background-position: center;
+}
+
+/* NXSTY animated text */
+.controller.xbox::after {
+    content: 'NXSTY';
+    position: absolute;
+    top: 41%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: #ff2222;
+    text-shadow:
+        0 0 8px #ff0000,
+        0 0 20px #cc0000,
+        0 0 40px #880000;
+    z-index: 20;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: nxstyPulse 2.5s ease-in-out infinite, flicker 6s step-end infinite;
+}
+
+/* Button pressed - red glow */
+.controller.xbox .button.pressed {
+    filter: drop-shadow(0 0 6px #cc0000) drop-shadow(0 0 12px #cc0000) sepia(1) saturate(6) hue-rotate(310deg);
+}
+
+/* Triggers */
+.controller.xbox .trigger { opacity: 0; }
+.controller.xbox .trigger.pressed {
+    opacity: 1;
+    filter: sepia(1) saturate(6) hue-rotate(310deg) drop-shadow(0 0 10px #cc0000);
+}
+
+/* Bumpers */
+.controller.xbox .bumper { opacity: 0; }
+.controller.xbox .bumper.pressed {
+    opacity: 1;
+    filter: sepia(1) saturate(6) hue-rotate(310deg) drop-shadow(0 0 8px #cc0000);
+}
+
+/* Sticks */
+.controller.xbox .stick { filter: brightness(0.12); }
+.controller.xbox .stick.pressed {
+    filter: sepia(1) saturate(6) hue-rotate(310deg) brightness(0.9);
+}
+
+/* Dpad */
+.controller.xbox .face { filter: brightness(0.1); }
+.controller.xbox .face.pressed {
+    filter: sepia(1) saturate(6) hue-rotate(310deg) brightness(0.9);
+}
